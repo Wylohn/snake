@@ -28,16 +28,15 @@ const scoreRegister = document.querySelector('.scores')
 
 let f = 8;
 
-window.onload = function() {
-  canvas = document.getElementById('boardsnake');
-  ctx = canvas.getContext('2d');
-  affScore = document.getElementById('score')
-  easy.addEventListener('click', easyLevel)
-  medium.addEventListener('click', mediumLevel)
-  hard.addEventListener('click', hardLevel)
-  document.addEventListener('keydown', onKeyDown);
-  game = setInterval(draw, 1000 / f);
-};
+
+canvas = document.getElementById('boardsnake');
+ctx = canvas.getContext('2d');
+affScore = document.getElementById('score')
+easy.addEventListener('click', easyLevel)
+medium.addEventListener('click', mediumLevel)
+hard.addEventListener('click', hardLevel)
+document.addEventListener('keydown', onKeyDown);
+game = setInterval(draw, 1000 / f);
 
 
 function easyLevel() {
@@ -56,6 +55,7 @@ function hardLevel() {
 }
 
 // Direction
+
 function onKeyDown(e) {
     switch (e.keyCode) {
       case 37:                  //Gauche
@@ -106,12 +106,14 @@ function onKeyDown(e) {
 };
 
 // Position apple
+
 const apple = {
     x:Math.floor(Math.random() * gridSize),
     y:Math.floor(Math.random() * gridSize),
 };
 
 // Reset
+
 replayButton.addEventListener('click', reset)
 
 function reset() {
@@ -126,6 +128,9 @@ function reset() {
   game = setInterval(draw, 1000 / f);
 }
 
+
+// Scoreboard
+
 function addScore(score) {
   var createLi = document.createElement('li')
   if (score > 0) {
@@ -136,6 +141,7 @@ function addScore(score) {
 }
 
 // Lose
+
 function lose() {
   clearInterval(game)
   addScore(score)
@@ -145,6 +151,7 @@ function lose() {
 
 
 // Lancement du jeu
+
 function draw() {
   ctx.fillStyle = '#181825';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -169,6 +176,7 @@ function draw() {
   );
   
   // Dégradé de couleur
+
   let lineaire = ctx.createLinearGradient(0, 150, 300, 150);
   lineaire.addColorStop(0.000, 'rgba(247, 149, 51, 1.000)');
   lineaire.addColorStop(0.151, 'rgba(243, 112, 85, 1.000)');
@@ -189,6 +197,7 @@ function draw() {
     );
     
     // Mort par lui-même
+
     if (tail > 1) {
       if (snake[i].x == snakeX && snake[i].y == snakeY) {
         lose();
@@ -202,6 +211,7 @@ function draw() {
   };  
 
   // Mort par bordure
+
   if (snakeX < 0 || snakeX * gridSize >= canvas.width  || snakeY < 0 || snakeY * gridSize >= canvas.height) {
     lose();
   };

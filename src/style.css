@@ -2,6 +2,8 @@ body {
     height: 100vh;
     background-color: #1a1e2b;
     overflow: hidden;
+    font-family: 'Londrina Solid', cursive;
+    color: #ffffff;
 }
 
 main {
@@ -11,10 +13,12 @@ main {
 
 .contain-canvas {
     display: flex;
+    position: absolute;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 70%;
+    height: 100%;
+    top: 0;
 }
 
 header {
@@ -22,12 +26,21 @@ header {
     margin-bottom: 2%;
 }
 
-h1 {
+h1, h2 {
     display: flex;
+    position: absolute;
     justify-content: center;
-    color: #ffffff;
-    font-family: 'Londrina Solid', cursive;
+    width: 100%;
+}
+
+h1 {
+    top: 5%;
     font-size: 2.5rem;
+}
+
+h2 {
+    top: 15%;
+    font-size: 1.8rem;
 }
 
 .scoreboard {
@@ -39,12 +52,11 @@ h1 {
     background-color: #181825;
     color: #ffffff;
     left: 5%;
-    top: 10%;
+    top: 15%;
     border-radius: 5%;
-    font-family: 'Londrina Solid', cursive;
 }
 
-h2 {
+h3 {
     display: flex;
     justify-content: center;
     margin-top: 5%;
@@ -70,7 +82,6 @@ li {
 }
 
 #boardsnake {
-
     border: 5px solid #000000;
 }
 
@@ -81,17 +92,17 @@ li {
     height: 50px;
     cursor: pointer;
     color: white;
-    background-color: #8F8EB4;
+    background-color: #6360a3;
     outline: none;
     transition: .1s;
-    box-shadow: 0px 5px 10px #3B59C5;
+    box-shadow: 0px 5px 10px #6360a3;
     border-style: none;
     border-radius: 10px;
 }
 
 .replay:hover {
-    background-color: #8CE3FF;
-    box-shadow: 0px 0px 15px #8CE3FF;
+    background-color: #8cb4ff;
+    box-shadow: 0px 0px 15px #8cb4ff;
     color: black;
 }
 
@@ -99,12 +110,18 @@ li {
     display: block;
 }
 
+button {
+    font-family: 'Londrina Solid', cursive;
+}
+
 .buttons {
     display: none;
+    position: absolute;
     direction: row;
     justify-content: center;
     width: 100%;
     margin-bottom: 1em;
+    bottom: 10%;
 }
 
 .buttons-show {
@@ -121,16 +138,16 @@ li {
     border-style: none;
     border-radius: 10px;
     margin: 0px 5px 0px;
-    background-color: #8F8EB4;
+    background-color: #6360a3;
     cursor: pointer;
     outline: none;
     transition: .1s;
-    box-shadow: 0px 5px 10px #3B59C5;
+    box-shadow: 0px 5px 7px #6360a3;
 }
 
 .level1:hover, .level2:hover, .level3:hover {
-    background-color: #8CE3FF;
-    box-shadow: 0px 0px 15px #8CE3FF;
+    background-color: #8cb4ff;
+    box-shadow: 0px 0px 15px #8cb4ff;
     color: black;
 }
 
@@ -145,4 +162,27 @@ li {
 
 .level3 {
     margin-right: 7em;
+}
+
+
+/* Responsive */
+
+@media (max-width: 980px){
+    
+    .scoreboard {
+        display: none;
+    }
+
+    header {
+        margin-top: 5%;
+        margin-bottom: 0%;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
 }
