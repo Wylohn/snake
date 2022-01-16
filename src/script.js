@@ -32,6 +32,8 @@ let f = 8;
 canvas = document.getElementById('boardsnake');
 ctx = canvas.getContext('2d');
 affScore = document.getElementById('score')
+arrowsContainer = document.querySelector('.touch-arrows')
+arrows = document.querySelectorAll('.touch-arrow')
 easy.addEventListener('click', easyLevel)
 medium.addEventListener('click', mediumLevel)
 hard.addEventListener('click', hardLevel)
@@ -56,54 +58,53 @@ function hardLevel() {
 
 // Direction
 
+function applyDirection(direction) {
+  switch (direction) {
+    case "up":
+      if(VeloY != 1){
+        VeloX = 0;
+        VeloY = -1;
+        break;
+      };
+    case "left":
+      if(VeloX != 1){
+        VeloX = -1;
+        VeloY = 0;
+        break;
+      };
+    case "down":
+      if(VeloY != -1){
+        VeloX = 0;
+        VeloY = 1;
+        break;
+      };
+    case "right":
+      if(VeloX != -1){
+        VeloX = 1;
+        VeloY = 0;
+        break;
+      }
+  }
+}
+
 function onKeyDown(e) {
     switch (e.keyCode) {
       case 37:                  //Gauche
-        if(VeloX != 1){
-          VeloX = -1;
-          VeloY = 0;
-          break;
-        }
-        else {
-          VeloX = 1;
-          VeloY = 0;
-          break;
-        }
+        applyDirection("left")
+        break
       case 38:                  //Haut
-        if(VeloY != 1){
-          VeloX = 0;
-          VeloY = -1;
-          break;
-        }
-        else {
-          VeloX = 0;
-          VeloY = 1;
-          break;
-        }
+        applyDirection("up")
+        break
       case 39:                  //Droite
-        if(VeloX != -1){
-          VeloX = 1;
-          VeloY = 0;
-          break;
-        }
-        else {
-          VeloX = -1;
-          VeloY = 0;
-          break;
-        }
+        applyDirection("right")
+        break
       case 40:                  //Bas
-        if(VeloY != -1){
-          VeloX = 0;
-          VeloY = 1;
-          break;
-        }
-        else {
-          VeloX = 0;
-          VeloY = -1;
-          break;
-        }
+        applyDirection("down")
+        break
     };
 };
+
+
 
 // Position apple
 
@@ -119,6 +120,7 @@ replayButton.addEventListener('click', reset)
 function reset() {
   replayButton.classList.remove('replay-show');
   diff.classList.remove('buttons-show');
+  arrowsContainer.classList.remove('isHidden');
   tail = 1;
   score = 0;
   VeloX = 0;
@@ -147,6 +149,7 @@ function lose() {
   addScore(score)
   replayButton.classList.add('replay-show');
   diff.classList.add('buttons-show');
+  arrowsContainer.classList.add('isHidden');
 }
 
 
