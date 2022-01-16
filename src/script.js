@@ -31,14 +31,23 @@ let f = 8;
 
 canvas = document.getElementById('boardsnake');
 ctx = canvas.getContext('2d');
-affScore = document.getElementById('score')
-arrowsContainer = document.querySelector('.touch-arrows')
-arrows = document.querySelectorAll('.touch-arrow')
-easy.addEventListener('click', easyLevel)
-medium.addEventListener('click', mediumLevel)
-hard.addEventListener('click', hardLevel)
+affScore = document.getElementById('score');
+arrowsContainer = document.querySelector('.touch-arrows');
+arrows = document.querySelectorAll('.touch-arrow');
+easy.addEventListener('click', easyLevel);
+medium.addEventListener('click', mediumLevel);
+hard.addEventListener('click', hardLevel);
 document.addEventListener('keydown', onKeyDown);
 game = setInterval(draw, 1000 / f);
+
+
+arrows.forEach(arrow => {
+  arrow.addEventListener('touchstart', ()=>{
+      if (typeof arrow.dataset.direction === "string") {
+        applyDirection(arrow.dataset.direction)
+      }
+  })
+});
 
 
 function easyLevel() {
@@ -55,6 +64,8 @@ function hardLevel() {
   f = 15
   reset()
 }
+
+
 
 // Direction
 
