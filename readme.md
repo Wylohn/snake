@@ -2,7 +2,7 @@
 
 ## Link
 
-Website : https://wylohn.github.io/snake/
+Website : https://wylohn.github.io/snake/src
 
 ### Description
 
