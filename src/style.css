@@ -15,11 +15,9 @@ main {
 
 .contain-canvas {
     display: flex;
-    position: absolute;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%;
     top: 0;
 }
 
@@ -30,18 +28,17 @@ header {
 
 h1, h2 {
     display: flex;
-    position: absolute;
     justify-content: center;
     width: 100%;
 }
 
 h1 {
-    top: 5%;
+    margin: 5% 0;
     font-size: 2.5rem;
 }
 
 h2 {
-    top: 15%;
+    margin: 5% 0;
     font-size: 1.8rem;
 }
 
@@ -116,7 +113,6 @@ button {
 
 .buttons {
     display: none;
-    position: absolute;
     direction: row;
     justify-content: center;
     width: 100%;
